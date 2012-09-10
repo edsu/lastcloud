@@ -9,6 +9,7 @@ function lastfmArtists() {
   var username = $('input[name="username"]').val();
   var url = "http://ws.audioscrobbler.com/2.0/?method=library.getartists&format=json&limit=100&api_key=" + key + "&user=" + username;
   $.ajax({url: url, dataType: "jsonp", success: soundcloudUsers});
+  return False;
 }
 
 function soundcloudUsers(lastfmResponse) {
