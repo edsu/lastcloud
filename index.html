@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="css/style.css"></link>
+
+        <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-16871278-7']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+          var ga = document.createElement('script'); 
+          ga.type = 'text/javascript'; 
+          ga.async = true;
+          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(ga, s);
+        })();
+        </script>
+    </head>
+    <body>
+
+        <header>lastcloud</header>
+
+        <section id="summary">
+
+            <p>
+            Enter your <a href="http://last.fm">LastFM</a> username below
+            and I'll try to find the top 100 artists you listen to who look
+            like they might upload tracks to  
+            <a href="http://soundcloud.com">Soundcloud</a>.
+            </p>
+
+            <p>
+            I'm not perfect, since there are some Soundcloud users who have 
+            taken musician names as their own. But you might be pleasantly
+            surprised to find some Soundcloud users you didn't know about
+            already.
+            </p>
+
+            <p>
+            Oh, this is a pure HTML and JavaScript
+            app, and you won't need to login to anything, or bring oAuth 
+            to the dance. Code is also on 
+            <a href="http://github.com/edsu/lastcloud">Github</a> 
+            if you have ideas for fixing/improving it.
+            </p>
+        </section>
+
+        <section id="search">
+            <input placeholder="your lastfm username" name="username" type="text">
+            <input type="submit" value="oh why not"></input>
+        </section>
+
+        <section id="results">
+            <ul id="results"></ul>
+        </section>
+
+        <!-- javascript -->
+        <script src="http://connect.soundcloud.com/sdk.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+        <script src="js/mustache.js"></script>
+        <script src="js/lastcloud.js"></script>
+        <script>
+          $(document).ready(init);
+        </script>
+
+        <!-- templates -->
+        <script id="artist-template" type="text/x-mustache-template">
+            <li class="artist" id="{{ id }}">
+              <img src="{{ image }}">
+              <br>
+              <a target="_new" href="{{ url }}">{{ name }}</a>
+              <br>
+            </li>        
+        </script>
+
+        <script id="soundcloud-template" type="test/x-mustache-template">
+        <a target="_new" href="{{ permalink_url }}">
+        <img title="{{ full_name }} [{{ username }}]"src="images/soundcloud-large.png"></img>
+        </a>
+        </script>
+    </body>
+</html>
