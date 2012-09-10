@@ -13,7 +13,9 @@ header {
 
 header img {
   vertical-align: top;
-} #summary {
+}
+
+#summary {
   font-size: 10pt;
   padding: 5px;
   font-style: italic;
@@ -32,15 +34,18 @@ header img {
 }
 
 #results li {
-  padding-top: 20px;
-  padding-bottom: 10px;
-  border-top: thin solid #eeeeee;
+  border: thin solid #dddddd;
   text-align: center;
   list-style: none;
+  margin: 20px;
 }
 
 #results .artist a {
   text-decoration: none;
+}
+
+#results .artist img {
+  margin-top: 20px;
 }
 
 @media only screen and (max-device-width: 480px) {

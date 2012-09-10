@@ -33,6 +33,7 @@ function addSoundcloud(response) {
   }
   for (var j in response) {
     var user = response[j];
+    if (! user.username) return;
     var username = normalize(user.username);
     var li = $("#" + username)[0];
     var template = $("#soundcloud-template").html();
