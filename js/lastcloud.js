@@ -19,9 +19,7 @@ function soundcloudUsers(lastfmResponse) {
     artist.id = normalize(artist.name);
     artist.image = artist.image[2]["#text"];
     $("#results").append(Mustache.render(template, artist));
-    if (i==0) {
     SC.get('/users', {q: artist.name}, addSoundcloud);
-    }
   }
 }
 

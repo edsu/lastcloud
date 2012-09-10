@@ -13,9 +13,7 @@ header {
 
 header img {
   vertical-align: top;
-}
-
-#summary {
+} #summary {
   font-size: 10pt;
   padding: 5px;
   font-style: italic;
@@ -35,6 +33,7 @@ header img {
 
 #results li {
   padding-top: 20px;
+  padding-bottom: 20px;
   border-top: thin solid #eeeeee;
   text-align: center;
   list-style: none;
@@ -45,7 +44,19 @@ header img {
 }
 
 @media only screen and (max-device-width: 480px) {
-  body: {
-    width: 100%;
+  body {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    -webkit-text-size-adjust: 300%;
   }
+
+  #summary {
+    display: none;
+  }
+
+  #search input {
+    height: 160px;
+  }
+
 }
