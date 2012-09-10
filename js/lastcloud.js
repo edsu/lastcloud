@@ -1,7 +1,6 @@
 function init() {
   SC.initialize({'client_id': '000d9ae8898f80c0fe2ace5bd9e8f58e'});
   $('input[type="submit"]').click(lastfmArtists);
-  $('input[type="text"]').change(lastfmArtists);
 }
 
 function lastfmArtists() {
@@ -20,7 +19,9 @@ function soundcloudUsers(lastfmResponse) {
     artist.id = normalize(artist.name);
     artist.image = artist.image[2]["#text"];
     $("#results").append(Mustache.render(template, artist));
+    if (i==0) {
     SC.get('/users', {q: artist.name}, addSoundcloud);
+    }
   }
 }
 
