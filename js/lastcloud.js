@@ -1,6 +1,3 @@
-/*jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, undef:true, unused:true, curly:true, browser:true, devel:true, jquery:true, indent:4, maxerr:50, strict:false, white:true */
-/*global SC:true, Mustache:true */
-
 function init() {
   SC.initialize({'client_id': '000d9ae8898f80c0fe2ace5bd9e8f58e'});
   $('input[type="submit"]').click(lastfmArtists);
@@ -22,7 +19,9 @@ function soundcloudUsers(lastfmResponse) {
     var artist = artists[i];
     artist.id = normalize(artist.name);
     artist.image = artist.image[2]["#text"];
-    $("#results").append(Mustache.render(template, artist));
+    // we will only show list members that have matches at soundcloud
+    var li = $(Mustache.render(template, artist)).hide();
+    $("#results").append(li);
     SC.get('/users', {q: artist.name}, addSoundcloud);
   }
 }
@@ -39,6 +38,7 @@ function addSoundcloud(response) {
     var template = $("#soundcloud-template").html();
     if (li) {
       $(li).append(Mustache.render(template, user));
+      $(li).show();
       // only report first match
       return;
     }
