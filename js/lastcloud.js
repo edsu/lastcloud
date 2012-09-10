@@ -1,3 +1,6 @@
+/*jshint forin:true, noarg:true, noempty:true, eqeqeq:true, bitwise:true, undef:true, unused:true, curly:true, browser:true, devel:true, jquery:true, indent:4, maxerr:50, strict:false, white:true */
+/*global SC:true, Mustache:true */
+
 function init() {
   SC.initialize({'client_id': '000d9ae8898f80c0fe2ace5bd9e8f58e'});
   $('input[type="submit"]').click(lastfmArtists);
@@ -9,7 +12,7 @@ function lastfmArtists() {
   var username = $('input[name="username"]').val();
   var url = "http://ws.audioscrobbler.com/2.0/?method=library.getartists&format=json&limit=100&api_key=" + key + "&user=" + username;
   $.ajax({url: url, dataType: "jsonp", success: soundcloudUsers});
-  return False;
+  return false;
 }
 
 function soundcloudUsers(lastfmResponse) {
