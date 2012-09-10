@@ -1,4 +1,5 @@
 function init() {
+  SC.initialize({'client_id': '000d9ae8898f80c0fe2ace5bd9e8f58e'});
   $('input[type="submit"]').click(lastfmArtists);
   $('input[type="text"]').change(lastfmArtists);
 }
@@ -19,7 +20,6 @@ function soundcloudUsers(lastfmResponse) {
     artist.id = normalize(artist.name);
     artist.image = artist.image[2]["#text"];
     $("#results").append(Mustache.render(template, artist));
-    SC.initialize({'client_id': '000d9ae8898f80c0fe2ace5bd9e8f58e'});
     SC.get('/users', {q: artist.name}, addSoundcloud);
   }
 }
@@ -36,6 +36,8 @@ function addSoundcloud(response) {
     var template = $("#soundcloud-template").html();
     if (li) {
       $(li).append(Mustache.render(template, user));
+      // only report first match
+      return;
     }
   }
 }
